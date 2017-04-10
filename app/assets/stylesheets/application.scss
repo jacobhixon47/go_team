@@ -11,22 +11,46 @@
  * It is generally better to create a new file per style scope.
  *
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "reset";
+
+@import "global";
+
+@import "mediaQueries";
+
+@import "fonts";
+
+@import "grid";
+
+@import "hero";
+
+@import "nav";
+
+@import "sidebar";
+
+@import "buttons";
+
+@import "forms";
+
+@import "footer";
+
+@import "helpers";
+
+@import "animations";
+
 
 $base_green : #49B56A;
 
-nav.navbar {
-  padding-right: 1%;
-  background-color: $base_green !important;
-  border: none;
-  border-radius: 0px;
-}
-
-.nav-list li a, .navbar-brand {
- color: #fff !important;
-}
-
-.nav-list li a:hover, .navbar-brand:hover {
- color: #ddd !important;
-}
+// nav.navbar {
+//   padding-right: 1%;
+//   background-color: $base_green !important;
+//   border: none;
+//   border-radius: 0px;
+// }
+//
+// .nav-list li a, .navbar-brand {
+//  color: #fff !important;
+// }
+//
+// .nav-list li a:hover, .navbar-brand:hover {
+//  color: #ddd !important;
+// }
