@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BudgetTracker</title>
+    <title>GO Team</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
-    <nav class="nav-dark"> 
+    <nav class="nav-pop fixed my-nav"> 
       <header> 
-        <h2 style="padding-top: 0px; padding-bottom: 1%;">GO Team</h2>
+        <h2 id="nav-brand-name">GO Team</h2>
       </header>
       <ul class="menu-items"> 
         <% if user_signed_in? %>
