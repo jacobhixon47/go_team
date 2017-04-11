@@ -10,11 +10,15 @@
   </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
-    <nav class="nav-pop fixed my-nav"> 
+    <!-- Tuxedo nav -->
+    <nav class="nav-ghost-pop fixed my-nav"> 
       <header> 
         <h2 id="nav-brand-name">TeamGo</h2>
       </header>
       <ul class="menu-items"> 
+        <li class="f-col-1 flex-center">
+          <a href="/">Home</a>
+        </li>
         <% if user_signed_in? %>
           <li class="f-col-1 flex-center">
             <%= link_to current_user.username, user_path(current_user) %>
@@ -24,13 +28,45 @@
           </li> 
         <% else %>
           <li class="f-col-1 flex-center">
-            <%= link_to "Sign Up", new_user_registration_path %>
+            <%= link_to "Login", new_user_session_path %>
           </li> 
           <li class="f-col-1 flex-center">
-            <%= link_to "Login", new_user_session_path %>
+            <%= link_to "Sign Up", new_user_registration_path %>
           </li> 
         <% end %>
       </ul>
+      <!-- Tuxedo mobile nav -->
+      <ul class="mobile-nav flex-center"> 
+        <div class="hamburger"></div> 
+      </ul>
+      <div class="flyout">
+        <div class="bar"> 
+          <header> 
+            <h2 id="nav-brand-name">TeamGo</h2>
+          </header>
+          <div class="close f-col-1"></div> 
+        </div>
+        <ul class="flyout-menu"> 
+          <li class="f-col-1 flex-center">
+            <a href="/">Home</a>
+          </li>
+          <% if user_signed_in? %>
+            <li class="f-col-1 flex-center">
+              <%= link_to current_user.username, user_path(current_user) %>
+            </li> 
+            <li class="f-col-1 flex-center">
+              <%= link_to "Sign Out", destroy_user_session_path, :data => { :method => 'delete' } %>
+            </li> 
+          <% else %>
+            <li class="f-col-1 flex-center">
+              <%= link_to "Login", new_user_session_path %>
+            </li> 
+            <li class="f-col-1 flex-center">
+              <%= link_to "Sign Up", new_user_registration_path %>
+            </li> 
+          <% end %>
+        </ul>
+      </div>
     </nav>
     <div class="container-fluid body-container">
       <%= flash[:notice] %>

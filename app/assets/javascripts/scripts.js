@@ -18,6 +18,11 @@ $(document).on("turbolinks:load", function() {
         scrollTop: 0
     }, 1000);
   });
+  $(".slideshow-signup").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#signup-form").offset().top
+    }, 1000);
+  });
 
 
   var nav = $('.my-nav');
@@ -25,14 +30,18 @@ $(document).on("turbolinks:load", function() {
 		var scroll = $(window).scrollTop();
 		if (scroll >= 300 && !nav.hasClass('nav-light')) {
 			nav.slideUp(1, function() {
-        nav.removeClass('nav-pop').addClass('nav-light').fadeIn(500);
+        nav.removeClass('nav-ghost-pop').addClass('nav-light').fadeIn(500);
         $('.back-to-top').fadeIn(500);
       });
-		} else if (scroll <= 100 && !nav.hasClass('nav-pop')) {
+		} else if (scroll <= 100 && !nav.hasClass('nav-ghost-pop')) {
       nav.slideUp(1, function() {
-        nav.removeClass('nav-light').addClass('nav-pop').fadeIn(500);
+        nav.removeClass('nav-light').addClass('nav-ghost-pop').fadeIn(500);
         $('.back-to-top').fadeOut(500);
       });
-		}
+		} else if (scroll >= 300 && scroll <= $("#signup-form").offset().top && $(".slideshow-signup").css('display') === 'none') {
+      $('.slideshow-signup').fadeIn(500);
+    } else if (scroll <= 100  || scroll >= $("#signup-form").offset().top && $(".slideshow-signup").css('display') !== 'none') {
+      $(".slideshow-signup").fadeOut(500);
+    }
   });
 });

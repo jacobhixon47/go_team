@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   //=================Animation functionality=============//
   function animations() {
     $(window).scroll( function(){  /* Every time the window is scrolled ... */
@@ -112,6 +111,8 @@ function heroSlideshow() {
 
 
 ////////// Add Functions to Call HERE//////////
-heroSlideshow();
-
+  heroSlideshow();
+  $(document).on('turbolinks:load', function() {
+    mobileMenu();
+  });
 });
