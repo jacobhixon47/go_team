@@ -3,6 +3,7 @@
   <head>
     <title>GO Team</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,7 +14,9 @@
     <!-- Tuxedo nav -->
     <nav class="nav-ghost-pop fixed my-nav"> 
       <header> 
-        <h2 id="nav-brand-name">TeamGo</h2>
+        <a href="/" id="nav-brand-name">
+          <h2>TeamGo</h2>
+        </a>
       </header>
       <ul class="menu-items"> 
         <li class="f-col-1 flex-center">

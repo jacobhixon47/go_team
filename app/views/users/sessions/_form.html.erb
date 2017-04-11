@@ -2,16 +2,14 @@
   <%= image_tag "hills.jpg", class: 'hero-image form-hero login-hero' %>
   <div class="hero-content">
     <div class="hero-body">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'bg-t-dark') do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'bg-t-dark') do |f| %>
         <%= devise_error_messages! %>
         <header>
           <h1 class="text-light">Login</h1>
         </header>
-        <%= f.label :email, class: 'text-light' %>
-        <%= f.email_field :email, class: 'input-light' %>
+        <%= f.email_field :email, class: 'input-light', placeholder: 'Email' %>
 
-        <%= f.label :password, class: 'text-light' %>
-        <%= f.password_field :password, autocomplete: "off", class: 'input-light' %>
+        <%= f.password_field :password, autocomplete: "off", class: 'input-light', placeholder: 'Password' %>
 
         <% if devise_mapping.rememberable? -%>
           <div class="checkbox-light" style="text-align: center;">
