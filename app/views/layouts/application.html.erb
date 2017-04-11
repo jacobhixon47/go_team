@@ -4,6 +4,7 @@
     <title>GO Team</title>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -11,7 +12,7 @@
   <body class="<%= controller_name %> <%= action_name %>">
     <nav class="nav-pop fixed my-nav"> 
       <header> 
-        <h2 id="nav-brand-name">GO Team</h2>
+        <h2 id="nav-brand-name">TeamGo</h2>
       </header>
       <ul class="menu-items"> 
         <% if user_signed_in? %>
@@ -23,10 +24,10 @@
           </li> 
         <% else %>
           <li class="f-col-1 flex-center">
-            <%= link_to "Sign In", new_user_session_path %>
+            <%= link_to "Sign Up", new_user_registration_path %>
           </li> 
           <li class="f-col-1 flex-center">
-            <%= link_to "Sign Up", new_user_registration_path %>
+            <%= link_to "Login", new_user_session_path %>
           </li> 
         <% end %>
       </ul>

@@ -12,29 +12,17 @@
  *
  */
 @import "reset";
-
 @import "global";
-
 @import "mediaQueries";
-
 @import "fonts";
-
 @import "grid";
-
 @import "hero";
-
 @import "nav";
-
 @import "sidebar";
-
 @import "buttons";
-
 @import "forms";
-
 @import "footer";
-
 @import "helpers";
-
 @import "animations";
 
 
@@ -43,8 +31,50 @@ $dark-grey: #3C3F42;
 $md-grey: #869293;
 $light: #E3E6E8;
 $color-pop: #26596C;
+$pop-green: #287D48;
+$pop-orange: #AC4C38;
 
 #nav-brand-name {
   padding-top: 0px;
   padding-bottom: 10px;
+}
+
+#learn-more-button-home {
+  background-color: $pop-green;
+  border-color: $pop-green;
+  &:hover {
+    background: darken($pop-green, 10%);
+    border-color: darken($pop-green, 10%);
+  }
+}
+
+.nav-light .menu-items li:hover {
+  background-color: darken($light, 10%);
+  a {
+    background-color: darken($light, 10%);
+  }
+}
+
+#home-slideshow, #signup-form {
+  display: none;
+}
+
+.back-to-top {
+  display: none;
+	position: fixed;
+	z-index: 999;
+	right: 20px;
+	bottom: 20px;
+  background-color: transparent;
+  border: 3px $pop-orange solid;
+  color: $light;
+  font-weight: 500;
+  &:hover {
+    background-color: $pop-orange;
+    border-color: $pop-orange;
+  }
+}
+
+.form-hero {
+  height: 105vh;
 }
