@@ -46,11 +46,9 @@ $pop-orange: #AC4C38;
 
 // -------- Navigation Bar Styling ------------
 #nav-brand-name {
-  &:hover {
+  padding-top: 0.5em;
+  a:hover {
     color: inherit;
-  }
-  h2 {
-    padding-top: 0em;
   }
 }
 .nav-light .menu-items li:hover {
