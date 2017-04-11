@@ -1,33 +1,30 @@
 <div class="hero">
-  <%= image_tag "hills.jpg", class: 'hero-image form-hero' %>
+  <%= image_tag "city-2.jpg", class: 'hero-image form-hero' %>
   <div class="hero-content">
     <div class="hero-body">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'bg-t-dark') do |f| %>
         <%= devise_error_messages! %>
         <header>
-          <h1 class="text-light">Sign Up</h1>
+          <h1 class="text-pop">Sign Up</h1>
         </header>
-          <%= f.label :username, class: 'text-light' %><br />
-          <%= f.text_field :username, autofocus: true, class: 'input-light' %>
+          <%= f.text_field :username, autofocus: true, class: 'input-light', placeholder: 'Username' %>
 
-          <%= f.label :email, class: 'text-light' %><br />
-          <%= f.email_field :email, class: 'input-light' %>
+          <%= f.email_field :email, class: 'input-light', placeholder: 'Email' %>
 
-          <%= f.label :password, class: 'text-light' %>
-          <% if @minimum_password_length %>
+          <!-- <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br/>
-          <%= f.password_field :password, autocomplete: "off", class: 'input-light' %>
+          <% end %><br/> -->
+          <%= f.password_field :password, autocomplete: "off", class: 'input-light', placeholder: 'Password (6 characters minimum)' %>
 
 
           <%= f.label :password_confirmation, class: 'text-light' %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'input-light' %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'input-light', placeholder: 'Confirm Password' %>
 
 
         <div class="actions">
           <div class="f-row">
             <%= f.submit "Sign up", class: 'btn-pop f-col-1 flex-center' %>
-            <button class="btn-ghost-light f-col-1 flex-center" name="button">Login</button>
+            <%= link_to "Login", new_user_session_path, class: "btn-ghost-light f-col-1 flex-center" %>
           </div>
         </div>
       <% end %>

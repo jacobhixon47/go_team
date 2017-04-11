@@ -1,4 +1,7 @@
 $(document).on("turbolinks:load", function() {
+  // Nav class changes
+  $('.sessions.new nav').removeClass('nav-ghost-pop').addClass('nav-ghost-light');
+  // Scroll Animations - ScrollTo
   $("#learn-more-button-home").click(function() {
     $('#signup-form').show();
     $('#home-slideshow').show();
@@ -24,7 +27,7 @@ $(document).on("turbolinks:load", function() {
     }, 1000);
   });
 
-
+  // Scroll Animations - Fade Buttons In/Out
   var nav = $('.my-nav');
 	$(window).scroll(function() {
 		var scroll = $(window).scrollTop();
