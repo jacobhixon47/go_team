@@ -167,3 +167,20 @@ button a {
 .messages-section {
   background-color: rgba(100, 100, 100, 0.7);
 }
+
+// Channels
+#new_channel {
+  padding-top: 5%;
+  margin-top: 5%;
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+.channel-radio-buttons-section div {
+  display: inline !important;
+}
+
+.members-select-list {
+  background: darken(rgba(50, 50, 50, 0.5), 10%);
+  max-height: 19vh !important;
+  overflow-y: scroll;
+}

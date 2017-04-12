@@ -9,11 +9,15 @@ class ChannelsController < ApplicationController
   end
 
   def create
-    @team = Team.find(params[:id])
+    @team = Team.find(params[:team_id])
     @channel = @team.channels.new(channel_params)
-    respond_to do |format|
-      format.html { redirect_to user_path(current_user) }
-      format.js
+    @member_ids = params[:members]
+    @channel.member_ids = @member_ids
+    if @channel.save
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user) }
+        format.js
+      end
     end
   end
 

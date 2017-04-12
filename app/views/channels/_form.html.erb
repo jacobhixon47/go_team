@@ -10,7 +10,37 @@
 <%= form_for [@team, @channel], class: 'box-pop' do |f| %>
   <%= devise_error_messages! %>
   <header class="form-header-pop">New Channel</header>
+  <div class="channel-radio-buttons-section">
+    <div class="radio-light">
+      <%= f.radio_button :public, true, checked: true, class: 'radio-group' %>
+      <%= f.label :public, "Public", :value => true  %>
+    </div>
+    <div class="radio-light">
+      <%= f.radio_button :public, false, class: 'radio-group' %>
+      <%= f.label :public, "Private", :value => false %>
+    </div>
+  </div><br>
   <%= f.text_field :name, class: 'input-light', placeholder: 'Channel Name' %>
+  <div class="members-select">
+    <div class="f-row responsive">
+      <div class="f-col-1 flex-center">
+        <h4 class="text-light">Add Members</h4>
+      </div>
+      <div class="f-col-3">
+        <div class="f-row responsive members-select-list">
+          <% @team.users.each do |user| %>
+            <div class="f-col-2 flex-center">
+              <div class="checkbox-light">
+                <%= check_box_tag :members, {multiple: true}, false, value: "#{user.id}" %>
+                <%= label_tag :members, "#{user.username}", value: "#{user.id}" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="actions">
     <div class="f-row">
       <%= f.submit "Create Channel", class: 'btn-pop f-col-1 flex-center' %>
