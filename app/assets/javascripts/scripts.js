@@ -58,11 +58,9 @@ $(document).on("turbolinks:load", function() {
     }
   });
 
-  $('#nav-brand-name').show();
   // hide sidebar unless on certain pages
   if ($('body').hasClass('teams') || $('body').hasClass('channels') || $('body').hasClass('messages')) {
     $('#my-team-sidebar').show();
-    $('#nav-brand-name').hide();
   } else if (!$('body').hasClass('teams')) {
     $('#my-team-sidebar').hide();
   }

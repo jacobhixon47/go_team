@@ -27,14 +27,14 @@
               <li><a href="#" class='dropdown-item'>Friends</a></li>
               <li class="dropdown"><a href="#">Teams -</a>
                 <ul class="sub-dropdown-menu">
-                  <% if Team.where("?=ANY(member_ids)", current_user.id).any? %>
-                    <% Team.where("?=ANY(member_ids)", current_user.id).each do |team| %>
+                  <% if current_user.teams.any? %>
+                    <% current_user.teams.each do |team| %>
                       <li><%= link_to team.name, team_path(team) %></li>
                     <% end %>
                   <% end %>
                 </ul>
               </li>
-              <li><%= link_to "+ New Team", new_team_path, class: 'dropdown-item' %></li>
+              <li><%= link_to "+ New Team", new_user_team_path(current_user), class: 'dropdown-item' %></li>
             </ul>
           </li> 
           <li class="f-col-1 flex-center">
@@ -72,14 +72,14 @@
                   <li><a href="#">Friends</a></li>
                   <li class="sub-fly-dropdown"><a href="#">Teams -</a>
                     <ul class="sub-dropdown-menu">
-                      <% if Team.where("?=ANY(member_ids)", current_user.id).any? %>
-                        <% Team.where("?=ANY(member_ids)", current_user.id).each do |team| %>
-                          <li><%= link_to team.name, team_path(team) %></li>
+                      <% if current_user.teams.any? %>
+                        <% current_user.teams.each do |team| %>
+                            <li><%= link_to team.name, team_path(team) %></li>
                         <% end %>
                       <% end %>
                     </ul>
                   </li>
-                  <li><%= link_to "+ New Team", new_team_path %></li>
+                  <li><%= link_to "+ New Team", new_user_team_path(current_user) %></li>
                 </ul>
               </li> 
             </li> 
@@ -99,24 +99,10 @@
     </nav>
 
   <!-- hidden unless on team page -->
-    <% if user_signed_in? %>
-      <div class="side-bar bg-pop" id="my-team-sidebar">
-        <head>
-          <h2 id="sidebar-brand">TeamGo</h2>
-        </head>
-        <ul class="underline-light">
-          <li><a>Menu Item 1</a></li>
-          <li><a>Menu Item 2</a></li>
-        </ul>
-        <ul>
-          <li><a>Menu Item 3</a></li> 
-        </ul>
-      </div>
-      <div class="container-fluid body-container">
-        <!-- <%= flash[:notice] %>
-        <%= flash[:alert] %> -->
-        <%= yield %>
-      </div>
-    <% end %>
+    <div class="container-fluid body-container">
+      <!-- <%= flash[:notice] %>
+      <%= flash[:alert] %> -->
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -51,6 +51,11 @@ $pop-orange: #AC4C38;
     color: inherit;
   }
 }
+
+.teams.show #nav-brand-name {
+  color: $light;
+}
+
 .nav-light .menu-items li:hover {
   background-color: darken($light, 10%);
   a {
@@ -126,6 +131,10 @@ button a {
 .dropdown-item:hover {
   background-color: darken($light, 10%) !important;
   color: $dark !important;
+}
+
+.sub-dropdown-menu li {
+  background-color: darken($light, 7%);
 }
 
 #my-team-sidebar {

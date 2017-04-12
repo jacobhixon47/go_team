@@ -7,16 +7,18 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
   end
+
   def new
     @user = current_user
     @team = Team.new
   end
+
   def create
     @user = current_user
     @team = Team.new(team_params)
     if @team.save
+      @user.team_memberships.create(:team_id => @team.id)
       @team.admin_ids.push(@user.id)
-      @team.member_ids.push(@user.id)
       @team.save
       flash[:notice] = "Your team has been created!"
       redirect_to team_path(@team)
@@ -28,6 +30,6 @@ class TeamsController < ApplicationController
 
 private
   def team_params
-    params.require(:team).permit(:name, :admin_ids, :member_ids)
+    params.require(:team).permit(:name, :admin_ids)
   end
 end
