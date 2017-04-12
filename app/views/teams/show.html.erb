@@ -1,27 +1,27 @@
 <div class="side-bar bg-pop" id="my-team-sidebar">
   <head>
-    <h1><%= @team.name %></h1>
+    <h1 class="text-light"><%= @team.name %></h1>
   </head><br><hr><br>
-  <h2 class="text-light">Channels</h2>
   <div class="f-row responsive">
     <%= link_to "+ New Channel", new_team_channel_path(@team), remote: true, class: 'f-col-1 btn-ghost-light' %>
   </div>
-  <% if @team.channels.any? %>
-    <% if @team.channels.where(public: true).any?  %>
-      <ul class="underline-light">
-        <% @team.channels.where(public: true).each do |channel| %>
-          <li><%= link_to channel.name, team_channel_path(@team, channel), remote: true %></li>
-        <% end %>
-      </ul>
+  <ul class="underline-light" id="public-channels-list">
+    <% if @team.channels.where(is_public: true).any?  %>
+      <h4 class="text-light">Public Channels</h4>
+      <% @team.channels.where(is_public: true).each do |channel| %>
+        <li><%= link_to channel.name, team_channel_path(@team, channel), remote: true %></li>
+      <% end %>
     <% end %>
-    <% if @team.channels.where(public: false).any?  %>
-      <ul class="underline-light">
-        <% @team.channels.where(public: false).each do |channel| %>
-          <li><%= link_to channel.name, team_channel_path(@team, channel), remote: true %></li>
-        <% end %>
-      </ul>
+  </ul>
+  <ul class="underline-light" id="private-channels-list">
+    <% if @team.channels.where(is_public: false).any?  %>
+      <h4 class="text-light">Private Channels</h4>
+      <% @team.channels.where(is_public: false).each do |channel| %>
+        <li><%= link_to channel.name, team_channel_path(@team, channel), remote: true %></li>
+      <% end %>
     <% end %>
-  <% end %>
+  </ul>
+
 </div>
 <div class="side-bar-content" style="text-align: center;">
   <h1 id="initial-team-greeting">Please select a channel, or create a new one :)</h1>

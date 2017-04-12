@@ -7,17 +7,17 @@
   </ul>
 <% end %>
 
-<%= form_for [@team, @channel], class: 'box-pop' do |f| %>
+<%= form_for [@team, @channel], class: 'box-pop', remote: true do |f| %>
   <%= devise_error_messages! %>
   <header class="form-header-pop">New Channel</header>
   <div class="channel-radio-buttons-section">
     <div class="radio-light">
-      <%= f.radio_button :public, true, checked: true, class: 'radio-group' %>
-      <%= f.label :public, "Public", :value => true  %>
+      <%= f.radio_button :is_public, true, checked: true, class: 'radio-group' %>
+      <%= f.label :is_public, "Public", :value => true  %>
     </div>
     <div class="radio-light">
-      <%= f.radio_button :public, false, class: 'radio-group' %>
-      <%= f.label :public, "Private", :value => false %>
+      <%= f.radio_button :is_public, false, class: 'radio-group' %>
+      <%= f.label :is_public, "Private", :value => false %>
     </div>
   </div><br>
   <%= f.text_field :name, class: 'input-light', placeholder: 'Channel Name' %>
