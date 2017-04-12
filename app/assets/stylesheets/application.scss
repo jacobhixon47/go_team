@@ -146,9 +146,11 @@ button a {
 }
 
 .side-bar-content {
-  background-color: darken($light, 10%);
+  background: image-url('bw-city.jpg');
+  background-size: cover;
+  // background-color: darken($light, 10%);
 }
 
 .messages-section {
-  background-color: darken($light, 17%);
+  background-color: rgba(100, 100, 100, 0.7);
 }
