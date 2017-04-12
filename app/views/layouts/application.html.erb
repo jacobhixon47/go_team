@@ -3,7 +3,7 @@
   <head>
     <title>TeamGo</title>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -97,11 +97,26 @@
         </ul>
       </div>
     </nav>
-    <div class="container-fluid body-container">
-      <!-- <%= flash[:notice] %>
-      <%= flash[:alert] %> -->
-      <%= yield %>
-    </div>
+
+  <!-- hidden unless on team page -->
+    <% if user_signed_in? %>
+      <div class="side-bar bg-pop" id="my-team-sidebar">
+        <head>
+          <h2 id="sidebar-brand">TeamGo</h2>
+        </head>
+        <ul class="underline-light">
+          <li><a>Menu Item 1</a></li>
+          <li><a>Menu Item 2</a></li>
+        </ul>
+        <ul>
+          <li><a>Menu Item 3</a></li> 
+        </ul>
+      </div>
+      <div class="container-fluid body-container">
+        <!-- <%= flash[:notice] %>
+        <%= flash[:alert] %> -->
+        <%= yield %>
+      </div>
+    <% end %>
   </body>
-</html>
 </html>

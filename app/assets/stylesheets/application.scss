@@ -127,3 +127,28 @@ button a {
   background-color: darken($light, 10%) !important;
   color: $dark !important;
 }
+
+#my-team-sidebar {
+  display: none;
+}
+
+#sidebar-brand {
+  color: $light;
+}
+
+.messages-section {
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+.side-bar-content, .side-bar {
+  max-height: 100vh;
+}
+
+.side-bar-content {
+  background-color: darken($light, 10%);
+}
+
+.messages-section {
+  background-color: darken($light, 17%);
+}

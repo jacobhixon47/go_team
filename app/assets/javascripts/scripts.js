@@ -27,24 +27,43 @@ $(document).on("turbolinks:load", function() {
     }, 1000);
   });
 
-  // Scroll Animations - Fade Buttons In/Out
+// Scroll Animations - Fade Buttons In/Out
   var nav = $('.my-nav');
 	$(window).scroll(function() {
 		var scroll = $(window).scrollTop();
-		if (scroll >= 300 && !nav.hasClass('nav-light')) {
+		if (scroll >= 300 && !nav.hasClass('nav-light') && !nav.hasClass('nav-pop')) {
 			nav.slideUp(1, function() {
-        nav.removeClass('nav-ghost-pop').addClass('nav-light').fadeIn(500);
+// if view is teams/channels/messages controlled
+        if ($('body').hasClass('teams') || $('body').hasClass('channels') || $('body').hasClass('messages')) {
+          nav.removeClass('nav-ghost-pop').addClass('nav-pop').fadeIn(500);
+        } else {
+          nav.removeClass('nav-ghost-pop').addClass('nav-light').fadeIn(500);
+        }
         $('.back-to-top').fadeIn(500);
       });
-		} else if (scroll <= 100 && !nav.hasClass('nav-ghost-pop')) {
+		} else if (scroll <= 150 && !nav.hasClass('nav-ghost-pop')) {
       nav.slideUp(1, function() {
-        nav.removeClass('nav-light').addClass('nav-ghost-pop').fadeIn(500);
+// if view is teams/channels/messages controlled
+        if ($('body').hasClass('teams') || $('body').hasClass('channels') || $('body').hasClass('messages')) {
+          nav.removeClass('nav-pop').addClass('nav-ghost-pop').fadeIn(500);
+        } else {
+          nav.removeClass('nav-light').addClass('nav-ghost-pop').fadeIn(500);
+        }
         $('.back-to-top').fadeOut(500);
       });
 		} else if (scroll >= 300 && scroll <= $("#signup-form").offset().top && $(".slideshow-signup").css('display') === 'none') {
       $('.slideshow-signup').fadeIn(500);
-    } else if (scroll <= 100  || scroll >= $("#signup-form").offset().top && $(".slideshow-signup").css('display') !== 'none') {
+    } else if (scroll <= 150  || scroll >= $("#signup-form").offset().top && $(".slideshow-signup").css('display') !== 'none') {
       $(".slideshow-signup").fadeOut(500);
     }
   });
+
+  $('#nav-brand-name').show();
+  // hide sidebar unless on certain pages
+  if ($('body').hasClass('teams') || $('body').hasClass('channels') || $('body').hasClass('messages')) {
+    $('#my-team-sidebar').show();
+    $('#nav-brand-name').hide();
+  } else if (!$('body').hasClass('teams')) {
+    $('#my-team-sidebar').hide();
+  }
 });
