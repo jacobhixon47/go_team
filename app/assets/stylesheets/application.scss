@@ -160,6 +160,10 @@ button a {
   // background-color: darken($light, 10%);
 }
 
+#my-sidebar-content {
+  display: none;
+}
+
 .messages-section {
   background-color: rgba(100, 100, 100, 0.7);
 }

@@ -3,28 +3,28 @@
     <h1><%= @team.name %></h1>
   </head><br><hr><br>
   <h2 class="text-light">Channels</h2>
-  <ul class="underline-light">
-    <li><a>Menu Item 1</a></li>
-    <li><a>Menu Item 2</a></li>
-  </ul>
-  <ul>
-    <li><a>Menu Item 3</a></li> 
-  </ul>
+  <div class="f-row responsive">
+    <%= link_to "+ New Channel", new_team_channel_path(@team), remote: true, class: 'f-col-1 btn-ghost-light' %>
+  </div>
+  <% if @team.channels.any? %>
+    <% if @team.channels.where(public: true).any?  %>
+      <ul class="underline-light">
+        <% @team.channels.where(public: true).each do |channel| %>
+          <li><%= link_to channel.name, team_channel_path(@team, channel), remote: true %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if @team.channels.where(public: false).any?  %>
+      <ul class="underline-light">
+        <% @team.channels.where(public: false).each do |channel| %>
+          <li><%= link_to channel.name, team_channel_path(@team, channel), remote: true %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
 </div>
 <div class="side-bar-content" style="text-align: center;">
-  <h2><i>$ test_channel $</i></h2>
-  <div class="messages-section">
-    <h1>Select a channel (:</h1>
-    <h1>Select a channel (:</h1>
-    <h1>Select a channel (:</h1>
-    <h1>Select a channel (:</h1>
-    <h1>Select a channel (:</h1>
-    <h1>Select a channel (:</h1>
-    <h1>Select a channel (:</h1>
-    <h1>Select a channel (:</h1>
-  </div>
-  <div class="f-row responsive">
-    <textarea class="textarea-light f-col-4" rows="3" placeholder="Textarea text here"></textarea>
-    <button type="button" class="btn-pop f-col-1 flex-center">Send</button>
+  <h1 id="initial-team-greeting">Please select a channel, or create a new one :)</h1>
+  <div id="my-sidebar-content">
   </div>
 </div>

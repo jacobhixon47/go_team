@@ -1,0 +1,19 @@
+<% if @channel.errors.any? %>
+  <h3>Oops there were some errors. Please try again:</h3>
+  <ul>
+    <% @channel.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@team, @channel], class: 'box-pop' do |f| %>
+  <%= devise_error_messages! %>
+  <header class="form-header-pop">New Channel</header>
+  <%= f.text_field :name, class: 'input-light', placeholder: 'Channel Name' %>
+  <div class="actions">
+    <div class="f-row">
+      <%= f.submit "Create Channel", class: 'btn-pop f-col-1 flex-center' %>
+    </div>
+  </div>
+<% end %>
