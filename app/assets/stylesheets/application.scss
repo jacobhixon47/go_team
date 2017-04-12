@@ -122,3 +122,8 @@ button a {
     border-color: $pop-orange;
   }
 }
+
+.dropdown-item:hover {
+  background-color: darken($light, 10%) !important;
+  color: $dark !important;
+}

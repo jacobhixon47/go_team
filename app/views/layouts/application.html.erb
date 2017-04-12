@@ -21,8 +21,21 @@
           <a href="/">Home</a>
         </li>
         <% if user_signed_in? %>
-          <li class="f-col-1 flex-center">
-            <%= link_to current_user.username, user_path(current_user) %>
+          <li class="f-col-1 flex-center dropdown">
+            <%= link_to current_user.username + ' -', user_path(current_user) %>
+            <ul class="dropdown-menu">
+              <li><a href="#" class='dropdown-item'>Friends</a></li>
+              <li class="dropdown"><a href="#">Teams -</a>
+                <ul class="sub-dropdown-menu">
+                  <% if Team.where("?=ANY(member_ids)", current_user.id).any? %>
+                    <% Team.where("?=ANY(member_ids)", current_user.id).each do |team| %>
+                      <li><%= link_to team.name, team_path(team) %></li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </li>
+              <li><%= link_to "+ New Team", new_team_path, class: 'dropdown-item' %></li>
+            </ul>
           </li> 
           <li class="f-col-1 flex-center">
             <%= link_to "Sign Out", destroy_user_session_path, :data => { :method => 'delete' } %>
@@ -53,7 +66,22 @@
           </li>
           <% if user_signed_in? %>
             <li class="f-col-1 flex-center">
-              <%= link_to current_user.username, user_path(current_user) %>
+              <li class="fly-dropdown">
+                <%= link_to current_user.username + ' -', user_path(current_user) %>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Friends</a></li>
+                  <li class="sub-fly-dropdown"><a href="#">Teams -</a>
+                    <ul class="sub-dropdown-menu">
+                      <% if Team.where("?=ANY(member_ids)", current_user.id).any? %>
+                        <% Team.where("?=ANY(member_ids)", current_user.id).each do |team| %>
+                          <li><%= link_to team.name, team_path(team) %></li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                  </li>
+                  <li><%= link_to "+ New Team", new_team_path %></li>
+                </ul>
+              </li> 
             </li> 
             <li class="f-col-1 flex-center">
               <%= link_to "Sign Out", destroy_user_session_path, :data => { :method => 'delete' } %>

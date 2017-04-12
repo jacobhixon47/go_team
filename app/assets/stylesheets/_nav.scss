@@ -22,16 +22,16 @@ nav {
     a, li {   //hover effect when nav links or dropdowns are selected
       margin: 0;
       .dropdown a:hover { //override so dropdown links will not be effected by hover below
-        background: $dark;
+        background: $color-pop;
         color: $light;
       }
       &:hover {
         background: $light;
-        color: $dark;
+        color: $color-pop;
         cursor: pointer;
       }
       a:hover {
-        color: inherit;
+        color: $color-pop;
       }
     }
   }
@@ -82,7 +82,7 @@ nav {
     left: 0;
     width: 100%;
     background: $light;
-    li {
+    li a {
       transition: background ease-in 100ms, color ease-in 100ms;
       background: $light;
       color: $dark;
