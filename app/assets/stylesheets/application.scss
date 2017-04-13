@@ -188,3 +188,11 @@ button a {
   overflow-y: scroll;
   background-color: rgba(100, 100, 100, 0.7);
 }
+
+.current-user-message-col {
+  text-align: right !important;
+}
+
+.foreign-user-message-col {
+  text-align: left;
+}
