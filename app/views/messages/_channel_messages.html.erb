@@ -1,0 +1,38 @@
+<h2><i><%= @channel.name %></i></h2>
+<div class="messages-section">
+  <ul class="messages-list">
+    <% if @channel.messages.any? %>
+      <% @channel.messages.each do |message| %>
+        <% if message.user == current_user %>
+        <div class="f-row responsive">
+          <li class="f-col-3 flex-center-v bg-pop text-light">
+            <h4><%= message.user.username %></h4>
+            <p><%= message.content %></p>
+          </li>
+        </div>
+        <% else %>
+        <div class="f-row responsive">
+          <li class="f-col-3 flex-center-v bg-light text-pop">
+            <h4><%= message.user.username %></h4>
+            <p><%= message.content %></p>
+          </li>
+        </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+<% if @message.errors.any? %>
+  <h3>Oops there were some errors. Please try again:</h3>
+  <ul>
+    <% @message.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for [@channel, @message], class: 'box-pop message-form f-row responsive', remote: true do |f| %>
+  <%= f.text_area :content, rows: 3, class: 'textarea-light f-col-4 flex-center', placeholder: 'Message' %>
+  <div class="actions">
+    <%= f.submit "Send", class: 'btn-pop f-col-1 flex-center send-message-button' %>
+  </div>
+<% end %>

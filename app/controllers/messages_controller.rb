@@ -1,11 +1,15 @@
 class MessagesController < ApplicationController
   def new
-    @channel = @team.channels.find(params[:channel_id])
-    @message = @channel.message.new
+    @channel = Channel.find(params[:channel_id])
+    @message = @channel.messages.new
+    respond_to do |format|
+      format.html { redirect_to team_path(@team) }
+      format.js
+    end
   end
   def create
-    @channel = @team.channels.find(params[:channel_id])
-    @message = @channel.message.new(message_params)
+    @channel = Channel.find(params[:channel_id])
+    @message = @channel.messages.new(message_params)
     @message.user = current_user
     if @message.save
       respond_to do |format|
@@ -14,7 +18,7 @@ class MessagesController < ApplicationController
       end
     else
       flash[:alert] = "There was a problem sending your message. Please try again."
-      render :new
+      render 'channels#show'
     end
   end
 
