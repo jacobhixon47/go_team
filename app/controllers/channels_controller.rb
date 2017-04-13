@@ -15,6 +15,7 @@ class ChannelsController < ApplicationController
     @channel.member_ids = @member_ids
     if @channel.save
       respond_to do |format|
+        format.html { redirect_to team_path(@team) }
         format.js
       end
     else
