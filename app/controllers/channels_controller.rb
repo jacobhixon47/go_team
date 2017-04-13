@@ -20,13 +20,18 @@ class ChannelsController < ApplicationController
       end
     else
       flash[:alert] = "There was an error creating your channel. Please try again."
-      render :new
     end
   end
 
   def show
     @team = Team.find(params[:team_id])
     @channel = @team.channels.find(params[:id])
+    @messages = @channel.messages.all
+    @message = @channel.message.new
+    respond_to do |format|
+      format.html { redirect_to team_path(@team) }
+      format.js
+    end
   end
 
 private

@@ -1,4 +1,15 @@
-<div class="f-row responsive">
-  <textarea class="textarea-light f-col-4" rows="3" placeholder="Textarea text here"></textarea>
-  <button type="button" class="btn-pop f-col-1 flex-center">Send</button>
-</div>
+<% if @message.errors.any? %>
+  <h3>Oops there were some errors. Please try again:</h3>
+  <ul>
+    <% @message.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for [@channel, @message], class: 'box-pop f-row responsive', remote: true do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.text_area :content, rows: 3, class: 'textarea-light f-col-4', placeholder: 'Message' %>
+  <div class="actions">
+    <%= f.submit "Send", class: 'btn-pop f-col-1 flex-center' %>
+  </div>
+<% end %>

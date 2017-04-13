@@ -1,0 +1,13 @@
+<li class="message-row f-row responsive">
+  <% if message.user == current_user %>
+    <li class=" f-col-1 bg-pop text-light flex-center-end">
+      <h4><%= message.user.username %></h4>
+      <p><%= message.content %></p>
+    </li>
+  <% else %>
+    <li class="f-col-1 bg-light text-dark flex-center-v">
+      <h4><%= message.user.username %></h4>
+      <p><%= message.content %></p>
+    </li>
+  <% end %>
+</li>

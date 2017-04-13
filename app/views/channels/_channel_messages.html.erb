@@ -1,15 +1,21 @@
-<h2><i>$ test_channel $</i></h2>
+<h2><i><%= @channel.name %></i></h2>
 <div class="messages-section">
-  <h1>Select a channel (:</h1>
-  <h1>Select a channel (:</h1>
-  <h1>Select a channel (:</h1>
-  <h1>Select a channel (:</h1>
-  <h1>Select a channel (:</h1>
-  <h1>Select a channel (:</h1>
-  <h1>Select a channel (:</h1>
-  <h1>Select a channel (:</h1>
+  <ul class="messages-list">
+    <% @messages.each do |message| %>
+      <li class="message-row f-row responsive">
+        <% if message.user == current_user %>
+          <li class=" f-col-1 bg-pop text-light flex-center-end">
+            <h4><%= message.user.username %></h4>
+            <p><%= message.content %></p>
+          </li>
+        <% else %>
+          <li class="f-col-1 bg-light text-dark flex-center-v">
+            <h4><%= message.user.username %></h4>
+            <p><%= message.content %></p>
+          </li>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </div>
-<div class="f-row responsive">
-  <textarea class="textarea-light f-col-4" rows="3" placeholder="Textarea text here"></textarea>
-  <button type="button" class="btn-pop f-col-1 flex-center">Send</button>
-</div>
+<%= render 'messages/form' %>

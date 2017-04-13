@@ -148,6 +148,7 @@ button a {
 .messages-section {
   max-height: 70vh;
   overflow-y: scroll;
+  background-color: rgba(100, 100, 100, 0.7);
 }
 
 .side-bar-content, .side-bar {
@@ -162,10 +163,6 @@ button a {
 
 #my-sidebar-content {
   display: none;
-}
-
-.messages-section {
-  background-color: rgba(100, 100, 100, 0.7);
 }
 
 // Channels
@@ -183,4 +180,11 @@ button a {
   background: darken(rgba(50, 50, 50, 0.5), 10%);
   max-height: 19vh !important;
   overflow-y: scroll;
+}
+
+.messages-section {
+  max-height: 70vh;
+  min-height: 70vh;
+  overflow-y: scroll;
+  background-color: rgba(100, 100, 100, 0.7);
 }
