@@ -1,35 +1,30 @@
+// --------- Business Logic -----------
+
 function loadMessages() {
-  console.log("loading messages...");
   $('#my-sidebar-content').empty();
   $('#my-sidebar-content').append('<%= j render "messages/messages_section" %>');
+  $('#messages-list').append('<%= j render "messages/messages_list" %>');
 }
 
 // var scrolled = false;
 function updateScroll() {
-  console.log("updating Scroll...");
-  // if(!scrolled) {
-  $('#messages-section').empty();
-  $('#messages-section').append('<%= j render "messages/messages_list" %>');
   var element = document.getElementById("messages-section");
-  console.log("element: " + element);
   setTimeout(function() {
     element.scrollTop = element.scrollHeight;
   }, 100);
-  // }
 };
 
-function update() {
-  console.log("updating...")
-  $.when(loadMessages()).then(updateScroll());
-};
+
+// -------- Interface logic ---------
 
 $('#initial-team-greeting').slideUp(500);
 $.when(loadMessages()).then(updateScroll());
 $('#my-sidebar-content').fadeIn(1000);
-// setInterval(function(){
-//   updateScroll();
-// }, 2000);
+// startAutoScrollChecker();
+setInterval(function(){
+  updateScroll();
+}, 5000);
 
-// $(".messages-section").on('scroll', function(){
-//     scrolled = true;
+// $('.messages-section').on('scroll', function() {
+//   scrolled = true;
 // });
