@@ -1,5 +1,5 @@
 <h2><i><%= @channel.name %></i></h2>
 <div class="messages-section" id="messages-section">
-  
+
 </div>
-<%= render 'form' %>
+<%= render partial: 'messages/form', locals: {message: @message, channel: @channel} %>

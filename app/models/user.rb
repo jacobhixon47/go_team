@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :username, :email, :password, presence: true
 
   has_many :messages
+  has_many :channels, through: :messages
   has_many :team_memberships
   has_many :teams, :through => :team_memberships
 

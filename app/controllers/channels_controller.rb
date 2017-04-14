@@ -25,14 +25,14 @@ class ChannelsController < ApplicationController
 
   def show
     @team = Team.find(params[:team_id])
-    @channel = @team.channels.find(params[:id])
-    @messages = @channel.messages.all
-    @message = @channel.message.new
+    @channel = Channel.find(params[:id])
+    @message = Message.new
     respond_to do |format|
       format.html { redirect_to team_path(@team) }
       format.js
     end
   end
+
 
 private
   def channel_params
