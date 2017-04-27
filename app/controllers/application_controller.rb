@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 private
 
   def set_user
-    cookies[:username] = current_user.username || 'guest'
+    if user_signed_in?
+      cookies[:username] = current_user.username
+    else
+      cookies[:username] = 'guest'
+    end
   end
 end
